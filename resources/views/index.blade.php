@@ -55,10 +55,11 @@
 
 	{{-- .page .home --}}
 <script type="text/ng-template" id="home.tpl">
-<div class="home container card">
+<div class="home container card" ng-controller="HomeController">
 	<h1>最新动态</h1>
 	<div class="hr"></div>
 	<div class="item-set">
+
 		<div class="item">
 			<div class="vote"></div>
 			<div class="feed-item-content">
@@ -74,28 +75,28 @@
 				<div class="comment-block">
 					<div class="hr"></div>
 					<div class="comment-item-set">
-						<div class="comment-item">
+						<div class="comment-item clearfix">
 							<div class="user">随旧岁</div>
 							<div class="comment-content">
 								这个剧长存笔记本，看了n多遍这个剧长存笔记本，看了n多遍这个剧长存笔记本，看了n多遍这个剧长存笔记本，看了n多遍这个剧长存笔记本，看了n多遍这个剧长存笔记本，看了n多遍这个剧长存笔记本，看了n多遍这个剧长存笔记本，看了n多遍这个剧长存笔记本，看了n多遍
 							</div>
 						</div>
-						<div class="clearfix"></div>
-						<div class="comment-item">
+						
+						<div class="comment-item clearfix">
 							<div class="user">随旧岁</div>
 							<div class="comment-content">
 								这个剧长存笔记本，看了n多遍这个剧长存笔记本，看了n多遍这个剧长存笔记本，看了n多遍这个剧长存笔记本，看了n多遍这个剧长存笔记本，看了n多遍这个剧长存笔记本，看了n多遍这个剧长存笔记本，看了n多遍这个剧长存笔记本，看了n多遍这个剧长存笔记本，看了n多遍
 							</div>
 						</div>	
-						<div class="clearfix"></div>					
-						<div class="comment-item">
+											
+						<div class="comment-item clearfix">
 							<div class="user">随旧岁</div>
 							<div class="comment-content">
 								这个剧长存笔记本，看了n多遍这个剧长存笔记本，看了n多遍这个剧长存笔记本，看了n多遍这个剧长存笔记本，看了n多遍这个剧长存笔记本，看了n多遍这个剧长存笔记本，看了n多遍这个剧长存笔记本，看了n多遍这个剧长存笔记本，看了n多遍这个剧长存笔记本，看了n多遍
 							</div>
 							
 						</div>
-						<div class="clearfix"></div>						
+											
 					</div>
 				</div>
 			</div>
