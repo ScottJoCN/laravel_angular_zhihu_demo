@@ -60,10 +60,13 @@ class Answer extends Model
 
 		if(rq('id')){
 			// 单个问题回答
-			$answer = $this->find(rq('id'));
+			$answer = $this
+			->with('user')
+			->with('users')
+			->find(rq('id'));
 			if(!$answer)
 				return ['status'=>0 ,'msg' => 'answer not exists'];
-			return ['status'=>1 ,'dada' => $answer];
+			return ['status'=>1 ,'data' => $answer];
 		}
 		// 在查看回答前，查看问题是否存在
 		if(!question_ins()->find(rq('question_id')))
@@ -85,8 +88,12 @@ class Answer extends Model
 		if(!$answer)
 			return ['status'=>0 ,'msg' => 'answer not exists'];
 
-		// 1为赞同票，2反对
-		$vote = rq('vote') <= 1 ? 1:2;
+		// 1为赞同票，2反对 3清空
+		// $vote = rq('vote') <= 1 ? 1:2;
+		$vote = rq('vote');
+		if($vote != 1&& $vote !=2 && $vote !=3){
+			return ['status' =>0, 'msg'=>'invalid vote'];
+		}
 		// 检查此用户是否在相同问题下投过票，如果投过票，删除投票结果
 		$vote_ins = $answer
 		->users()
@@ -94,10 +101,16 @@ class Answer extends Model
 		->where('user_id',session('user_id'))
 		->where('answer_id',rq('id'))
 		->delete();
+
+		if($vote ==3)
+			return ['status' =>1 ];
 		// 在连接表中增加数据
 		$answer->users()->attach(session('user_id'),['vote' => $vote]);
 		return ['status'=>1];
 
+	}
+	public function user(){
+		return $this->belongsTo('App\User');
 	}
 	public function users(){
 		return $this

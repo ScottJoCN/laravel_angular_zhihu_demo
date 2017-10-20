@@ -150,7 +150,20 @@ Route::any('api/comment/del',function(){
 	return comment_ins()->del();
 })->middleware('web2');
 // -----------------------------------------
-Route::any('api/timeline','CommonController@timeline')->middleware('web');
+Route::any('api/timeline','CommonController@timeline')->middleware('web2');
+
+Route::get('tpl/page/home',function(){
+	return view('page.home');
+});
+Route::get('tpl/page/signup',function(){
+	return view('page.signup');
+});
+Route::get('tpl/page/login',function(){
+	return view('page.login');
+});
+Route::get('tpl/page/question_add',function(){
+	return view('page.question_add');
+});
 /*
 |--------------------------------------------------------------------------
 | Application Routes
